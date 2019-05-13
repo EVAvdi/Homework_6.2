@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidRandom</string>
+    <string name="next_button">Вперед</string>
+    <string name="back_button">Назад</string>
+    <string name="random_numb">678</string>
+    <string name="random" />
+</resources>
