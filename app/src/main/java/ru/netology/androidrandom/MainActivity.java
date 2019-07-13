@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonNext;
     int min = 1;
     int max = 100;
+    int activityNumber = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(clickBackListener);
         int randNumb = min + (int)(((max-min)+min)*Math.random());
         number.setText(""+randNumb);
+        activityNumber = randNumb;
     }
+
     private View.OnClickListener clickNextListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -42,4 +47,30 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     };
+
+    protected void onStart(){
+        Log.d("Lifecicle", activityNumber + "onStart");
+        Toast.makeText(this, "onStart "+activityNumber, Toast.LENGTH_SHORT).show();
+        super.onStart();
+    }
+    protected void onPause(){
+        Log.d("Lifecicle", activityNumber + "onPause");
+        Toast.makeText(this, "onPause "+activityNumber, Toast.LENGTH_SHORT).show();
+        super.onPause();
+    }
+    protected void onStop(){
+        Log.d("Lifecicle", activityNumber + "onStop");
+        Toast.makeText(this, "onStop "+activityNumber, Toast.LENGTH_SHORT).show();
+        super.onStop();
+    }
+    protected void onDestroy(){
+        Log.d("Lifecicle", activityNumber + "onDestroy");
+        Toast.makeText(this, "onDestroy "+activityNumber, Toast.LENGTH_SHORT).show();
+        super.onDestroy();
+    }
+    protected void onRestart(){
+        Log.d("Lifecicle", activityNumber + "onRestart");
+        Toast.makeText(this, "onRestart "+activityNumber, Toast.LENGTH_SHORT).show();
+        super.onRestart();
+    }
 }
